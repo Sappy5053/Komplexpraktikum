@@ -1,0 +1,6 @@
+CNAF file:	C:\EXPERI~1\AUJUN21\CNAFS\XY-SE-SB.WRK
+comment:	Jena microcontroller 03 3.3V fs12
+CAMAC parameters per event:	    5
+number of events per record:	  204
+date:	03.06.21
+time:	15:10:18

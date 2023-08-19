@@ -1,0 +1,28 @@
+python Version: 3.11.3
+
+used libraries:
+	openCV (cv2)
+	os
+	pandas
+	numpy
+
+Directories:
+	main
+		backup
+			--> backup of csv data
+		
+		csv
+			
+			resized
+				--> resized csv documents
+				--> cross_section_multiintensity.py
+				
+			--> csv files to be resized
+		
+		panos
+			--> panoramas used to calculate scaling factor (paths are handed over via manual input
+		
+		--> pixelBinning_v0-2.py
+		
+		--> README
+		

@@ -1,0 +1,227 @@
+/GSI/Messungen/Daten/AuJun21/DATA
+Ionen: Gold
+Energie: 1,2GeV
+
+offene Fragen:
+Transidaten+Ionendaten auch dabei?
+Grundrauschen? (SEL an zufälligen Positionen)
+Ionenanzahlen bei jeweiligen Messungen?
+
+Für JourFixe:
+Fragen an INT: Ionenabschirmung der Metallisierung?
+-Thilo Kaupisch fragen: Vortrag bei DLR-Bauteileconf?
+
+
+	Ab hier aus Kays Doku (+Ergänzungen):
+Mikroskop: 
+	5x Objektiv: x: 597px=900µm	y: 461px=700µm
+	50xObjektiv: x: 521px=84 µm	y: 346px=56 µm
+	
+	defl4 x=33,7µm	y=35,7µm
+	defl5 3*defl4
+	defl6 3*defl5
+	
+jenami01.dat.txt	Ions: 11824	Latchups: 5	Latchups/Ion: 0.0004228687415426252	
+jenami02.dat.txt	Ions: 796	Latchups: 0	Latchups/Ion: 0.0	~1µm Strahl
+jenami03.dat.txt	Ions: 9	Latchups: 0	Latchups/Ion: 0.0	
+jenami04.dat.txt	Ions: 4810	Latchups: 5	Latchups/Ion: 0.0010395010395010396 	Defl5
+jenami05.dat.txt	Ions: 2013	Latchups: 6	Latchups/Ion: 0.0029806259314456036 	gate des CAMAC von 4µs auf ~8µs (???)
+jenami06.dat.txt	Ions: 15873	Latchups: 71	Latchups/Ion: 0.004473004473004473
+jenami07.dat.txt	Ions: 2697	Latchups: 26	Latchups/Ion: 0.0096403411197627		verfahren
+jenami08.dat.txt	Ions: 4207	Latchups: 49	Latchups/Ion: 0.011647254575707155		verfahren
+jenami09.dat.txt	Ions: 4219	Latchups: 55	Latchups/Ion: 0.013036264517658214		verfahren / über Nacht, danach Bilder 5x und 50x Obj.
+jenami10.dat.txt	Ions: 50807	Latchups: 461	Latchups/Ion: 0.009073552856889799		500nm Strahl	neuer Chip (???)
+
+	VCC-sweep ATtiny20 DUT#2(=PCB-O) :
+jenami11.dat.txt	3V3	Ions: 27258	Latchups: 470	Latchups/Ion: 0.017242644361288428	blau
+jenami12.dat.txt	1V8	Ions: 21314	Latchups:  0	Latchups/Ion: 0.0	0	
+jenami13.dat.txt	2V8	Ions: 21631	Latchups:  4	Latchups/Ion: 0.00018491979104063612	
+jenami14.dat.txt	3V8	Ions: 21715	Latchups: 1016	Latchups/Ion: 0.046787934607414226	grün
+jenami15.dat.txt	4V8	Ions: 21959	Latchups: 2951	Latchups/Ion: 0.13438681178560044	gelb
+jenami16.dat.txt	5V5	Ions: 21551	Latchups: 3921	Latchups/Ion: 0.18194051320124358	rot
+jenami17.dat.txt	3V3	Ions: 96115	Latchups: 1930	Latchups/Ion: 0.02008011236539562	
+
+jenami18.dat.txt		Ions: 74736	Latchups: 0	Latchups/Ion: 0.0	chip3 DUT#3(=PCB-W)
+
+	ATtiny20 Fullscan	fs-files: Strahl groß, intensiv(???) Defl.6
+micfs12.dat.txt Ions: 37949	Latchups: 0	Latchups/Ion: 0.0
+micfs13.dat.txt Ions: 40014	Latchups: 17	Latchups/Ion: 0.0004248513020442845
+micfs14.dat.txt Ions: 41251	Latchups: 46	Latchups/Ion: 0.0011151244818307436
+micfs15.dat.txt Ions: 84584	Latchups: 55	Latchups/Ion: 0.0006502411803650809
+micfs21.dat.txt Ions: 39782	Latchups: 5	Latchups/Ion: 0.00012568498315821227
+micfs22.dat.txt Ions: 57332	Latchups: 17	Latchups/Ion: 0.00029651852368659735
+micfs23.dat.txt Ions: 59278	Latchups: 1676	Latchups/Ion: 0.028273558487128446
+micfs24.dat.txt Ions: 57113	Latchups: 1959	Latchups/Ion: 0.034300421970479576
+micfs25.dat.txt Ions: 44411	Latchups: 94	Latchups/Ion: 0.0021165927360338654
+micfs31.dat.txt Ions: 37955	Latchups: 0	Latchups/Ion: 0.0
+micfs32.dat.txt Ions: 41873	Latchups: 117	Latchups/Ion: 0.0027941633033219497
+micfs33.dat.txt Ions: 40905	Latchups: 890	Latchups/Ion: 0.021757731328688426
+micfs34.dat.txt Ions: 59434	Latchups: 4172	Latchups/Ion: 0.07019551098697716
+micfs35.dat.txt Ions: 146803	Latchups: 15080	Latchups/Ion: 0.10272269640266207
+micfs41.dat.txt Ions: 31965	Latchups: 0	Latchups/Ion: 0.0
+micfs42.dat.txt Ions: 41137	Latchups: 909	Latchups/Ion: 0.022096895738629458
+micfs43.dat.txt Ions: 41366	Latchups: 1972	Latchups/Ion: 0.047672001160373255
+micfs44.dat.txt Ions: 74412	Latchups: 4529	Latchups/Ion: 0.06086383916572596
+micfs45.dat.txt Ions: 118757	Latchups: 13399	Latchups/Ion: 0.11282703335382335
+micfs51.dat.txt Ions: 36006	Latchups: 0	Latchups/Ion: 0.0
+micfs52.dat.txt Ions: 42307	Latchups: 0	Latchups/Ion: 0.0
+micfs53.dat.txt Ions: 49858	Latchups: 137	Latchups/Ion: 0.0027478037626860285
+micfs54.dat.txt Ions: 58715	Latchups: 684	Latchups/Ion: 0.011649493315166482
+micfs55.dat.txt Ions: 49299	Latchups: 168	Latchups/Ion: 0.003407777034016917
+
+jemic19.dat.txt	500nm Strahl Defl5
+jemic20.dat	5V5
+jemic21.dat	???
+jemic22.dat	verschoben
+jemic23.dat	verschoben
+jemic24.dat	verschoben
+
+micN01.dat	[Strahl auf nichtangeschlossenem Chip]	Defl5
+micn02.dat	[Strahl auf nichtangeschlossenem Chip]	Strahl auf Pos1 (=DUT#6=PCB-N), Kabel an Pos3
+	Kabel auf Pos3 gesteckt (DUT#4=PCB-S)
+micn03_nichtN.dat.txt	Ions: 11020	Latchups: 94	Latchups/Ion: 0.00852994555353902	Das war nicht ChipN
+micn04_nichtN.dat.txt	Ions: 98622	Latchups: 1344	Latchups/Ion: 0.01362779095942082	mit Bild 03.tif
+	auf Pos2 rotiert und gesteckt
+mict05.dat	="micT04 mit Bild T05.tif"???
+mict06.dat	mit Bild T06.tif leicht x verschoben
+	auf Pos1 rotiert und Kabel gesteckt
+micunk07.dat	mit Bild micunbekannt07.tif
+
+???ATtiny-Messungen aus Zeitgründen beendet?
+
+MSP430 eingebaut Pos.1 Defl6 300x300µm²
+msp1_01.dat.txt	Ions: 21330	Latchups: 3667	Latchups/Ion: 0.17191748710736052
+msp1_02.dat.txt	Ions: 14100	Latchups: 1515	Latchups/Ion: 0.1074468085106383
+msp1_03.dat.txt	Ions: 10763	Latchups: 130	Latchups/Ion: 0.012078416798290439
+msp1_04.dat.txt	Ions: 9527	Latchups: 374	Latchups/Ion: 0.039256848955599874
+msp1_05.dat.txt	Ions: 14063	Latchups: 854	Latchups/Ion: 0.06072672971627675
+msp1_06.dat.txt	Ions: 2892	Latchups: 634	Latchups/Ion: 0.21922544951590595
+	"andere Chips nicht gefunden" ???
+msp1_07.dat.txt	Ions: 441596	Latchups: 84532	Latchups/Ion: 0.19142383536082755	Dauermessung über Nacht 480000 Ionen
+msp1_08.dat.txt	Ions: 16930	Latchups: 605	Latchups/Ion: 0.03573538098050797	Defl4 langsam gescannt
+msp1_09.dat.txt	Ions: 18540	Latchups: 3539	Latchups/Ion: 0.19088457389428262	Defl5 Variationen der Scangeschw.
+msp1_10.dat.txt	Ions: 3950	Latchups: 1012	Latchups/Ion: 0.2562025316455696	1kHz Scanfrequenz
+msp1_11.dat.txt	Ions: 7186	Latchups: 1371	Latchups/Ion: 0.19078764263846368	langsam gescannt ~0,5Hz Zeilengeschw.
+msp1_12.dat.txt	Ions: 16250	Latchups: 2512	Latchups/Ion: 0.15458461538461538	Variationen Scangeschw.
+msp1_13.dat.txt	Ions: 15084	Latchups: 2782	Latchups/Ion: 0.18443383717846726	dito
+	Kays Doku ENDE
+
+Was ist das alles?:
+Transis(???)
+a106_01.dat
+a106_02.dat
+a108_01.dat.txt
+a108_02.dat.txt
+a108_03.dat.txt
+a108_04.dat.txt
+a209_01.dat
+A304_01.dat
+a304_02.dat.txt
+a304_03.dat.txt
+a304_04.dat.txt
+a306_01.dat.txt
+a306_02.dat.txt
+a306_03.dat.txt
+a310_01.dat.txt
+a404_01.dat
+a504_01.dat
+a504_02.dat
+a603_01.dat
+
+jena01.dat.txt
+jena02.dat.txt
+jena03.dat.txt
+jena04.dat.txt
+jena05.dat.txt
+jena06.dat.txt
+jena07.dat.txt
+jena08.dat.txt
+jena09.dat.txt
+jena10.dat.txt
+jena11.dat.txt
+jena12.dat.txt
+jena13.dat.txt
+jena14.dat.txt
+jena15.dat.txt
+jena16.dat.txt
+jena17.dat.txt
+jena18.dat.txt
+jena19.dat.txt
+jena20.dat.txt
+
+micunk0.dat
+
+micfs.svg
+
+
+Pulser01.dat
+pulser02.dat
+pulser03.dat
+pulser04.dat
+pulser05.dat
+Roh.dat
+SE01.DAT
+se02.dat.txt
+se03.dat.txt
+se04.dat.txt
+se05.dat.txt
+se06.dat.txt
+se07.dat.txt
+se08.dat.txt
+se09.dat.txt
+se10.dat.txt
+se11.dat.txt
+se12.dat.txt
+se13.dat.txt
+se14.dat.txt
+se15.dat.txt
+se16.dat.txt
+se17.dat.txt
+se18.dat.txt
+se19.dat.txt
+se20.dat.txt
+se21.dat.txt
+se22.dat.txt
+se23.dat.txt
+se24.dat.txt
+se25.dat.txt
+se26.dat.txt
+se30.dat.txt
+se31.dat.txt
+se32.dat.txt
+se33.dat.txt
+se34.dat.txt
+se35.dat.txt
+se36.dat.txt
+se37.dat.txt
+se38.dat.txt
+se39.dat.txt
+se40.dat.txt
+se41.dat.txt
+se42.dat.txt
+se43.dat.txt
+se44.dat.txt
+se45.dat.txt
+se46.dat.txt
+se47.dat.txt
+se48.dat.txt
+se49.dat.txt
+se50.dat.txt
+se51.dat.txt
+se52.dat.txt
+se53.dat.txt
+se54.dat.txt
+se55.dat.txt
+se56.dat.txt
+se57.dat.txt
+se58.dat.txt
+stim01.dat.txt
+stim02.dat.txt
+stim03.dat.txt
+stim04.dat.txt
+stim05.dat.txt
+stim06.dat.txt
+stim07.dat.txt
+stim08.dat.txt
+stim.dat.txt
+test.dat

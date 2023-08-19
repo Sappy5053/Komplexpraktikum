@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.5.5.2 (Linux)"/>
+	<meta name="created" content="2023-06-08T14:23:31.005465672"/>
+	<meta name="changed" content="2023-08-15T22:53:29.168253540"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		h1 { margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h1.western { font-family: "Liberation Sans", sans-serif; font-size: 18pt; font-weight: bold }
+		h1.cjk { font-family: "Source Han Sans CN"; font-size: 18pt; font-weight: bold }
+		h1.ctl { font-family: "Droid Sans Devanagari"; font-size: 18pt; font-weight: bold }
+		h2 { margin-top: 0.14in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt; font-weight: bold }
+		h2.cjk { font-family: "Source Han Sans CN"; font-size: 16pt; font-weight: bold }
+		h2.ctl { font-family: "Droid Sans Devanagari"; font-size: 16pt; font-weight: bold }
+		a:link { color: #000080; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><h1 class="western">
+Ansätze zum Zusammenfügen zu einem Panorama</h1>
+<p>Die neuen Bilder sollen miteinander kombiniert werden, um den
+Vergleich mit den Ergebnissen von LUNTE zu erleichtern. Außerdem
+soll geprüft werden, ob der gesamte Mikrocontroller wirklich
+gescannt wurde oder ob einige Bereiche ausgelassen wurden.</p>
+<h2 class="western"><a name="__RefHeading___Toc14237_776012695"></a>Hugin</h2>
+<p style="margin-bottom: 0in">Hugin ist ein FOSS (Free Open Source
+Software) Stitching Programm zur Erstellung von Panoramas.</p>
+<p style="margin-bottom: 0in"><br/>
+
+</p>
+<p style="margin-bottom: 0in">Die neu generierten Bilder werden in
+drei Schritten zusammengefügt:</p>
+<ol>
+	<li><p style="margin-bottom: 0in"><i>Einlesen der Bilder:</i> Die
+	Bilder können per drag and drop in Hugin eingelesen werden.</p>
+	<li><p style="margin-bottom: 0in"><i>Korrespondierende Punkte
+	finden:</i> Korrespondierende Punkte werden zuerst automatisch
+	gefunden und können anschließend manuell bearbeitet werden. Punkte
+	können gelöscht oder hinzugefügt werden. Es wird eine
+	Projektdatei angelegt.</p>
+	<li><p style="margin-bottom: 0in"><i>Stitchen:</i> Die Bilder werden
+	automatisiert zusammengefügt. Das resultierende Panorama wird im
+	Angegebenen Pfad gespeichert.</p>
+</ol>
+<p style="margin-bottom: 0in"><br/>
+
+</p>
+<p style="margin-bottom: 0in"><span id="Frame8" dir="ltr" style="float: left; width: 3.17in; border: none; padding: 0in; background: #ffffff"><p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+	<img src="chapter2_html_41057067a8ef318f.tif" name="Image8" align="left" width="100%" height="auto">
+  <br clear="left"/>
+</img>
+<font size="3" style="font-size: 12pt"><i>Figure
+	<span style="background: #c0c0c0">1</span>: Mit Hugin generiertes
+	Panorama</i></font></p>
+</span><br clear="left"><br/>
+
+</p>
+<p style="margin-bottom: 0in"><br/>
+
+</p>
+<p style="margin-bottom: 0in">Bei der Verwendung von Hugin treten
+folgende Probleme auf:</p>
+<ol>
+	<li><p style="margin-bottom: 0in">Da die Scanbereiche jeweils nur
+	einen Teil der Mikroskopaufnahme einnehmen gibt es erhebliche
+	Überschneidungen. Da die SEL nur auf einem der Bilder eingezeichnet
+	sind kommt es zum ‘Verschlucken’ der eingezeichneten SEL und das
+	resultierend Panorama ist nicht zu gebrauchen.</p>
+	<li><p style="margin-bottom: 0in">Aus dem generierten Projektfile
+	können keine relevanten Informationen zur Transformation der Bilder
+	rekonstruiert werden. Dadurch ist es nicht möglich die SEL nach dem
+	Erstellen des Panorama einzuzeichnen.</p>
+</ol>
+<p style="margin-bottom: 0in"><br/>
+
+</p>
+<p style="margin-bottom: 0in">Dementsprechen ist Hugin für diese
+Anwendung nicht geeignet und muss als Methode verworfen werden.</p>
+<p style="margin-bottom: 0in"><br/>
+
+</p>
+<h2 class="western"><a name="__RefHeading___Toc14239_776012695"></a>Alternativer
+Stitching-Ansatz mit Python Script</h2>
+<p>Für das Zusammenfügen der Mikroskopbilder wird anstatt Hugin ein
+Python-Script verwendet. Hierzu wird ein Stitching-Algorithmus aus
+dem Internet (<font color="#c9211e"><b>Quelle</b></font>) eingesetzt.
+</p>
+<p>Allerdings gibt es nach wie vor Probleme, da die SEL trotzdem noch
+&quot;verschluckt&quot; werden, ähnlich wie bei der Verwendung von
+Hugin. Deshalb ist es notwendig, die Herangehensweise anzupassen.</p>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
+<h2 class="western" style="page-break-before: always"><a name="__RefHeading___Toc14241_776012695"></a>
+Python – Ansatz über Homograpie-Matritzen</h2>
+<p>Python und OpenCV ermöglichen es mit Hilfe von
+Homographiematritzen Koordinatentransformationen zwischen zwei, sich
+überlappenden, Bildern durchzuführen. Um zwischen den einzelnen
+Bildern und dem erstellten Panorama Homographiematrizen zu berechnen,
+müssen folgende Schritte durchgeführt werden:</p>
+<p><br/>
+<br/>
+
+</p>
+<ol>
+	<li><p>Zuerst müssen korrespondierende Punkte in beiden Bildern
+	gefunden und die &quot;guten&quot; Korrespondenzen gespeichert
+	werden.</p>
+	<li><p>Im nächsten Schritt wird OpenCV verwendet, um die
+	Homographiematrix zu erstellen.</p>
+	<li><p>Anschließend werden die SEL-Koordinaten für das Panorama
+	berechnet. 
+	</p>
+	<p>Es gilt: 
+	<img src="chapter2_html_c6c6b098c5f5e7dd.gif" name="Object5" width="49" height="18"/>
+
+	, wobei H die Homographiematrix, x die Koordinaten im Originalbild
+	(Einzelbild) und x’ die transformierten Koordinaten im Panorama
+	sind.</p>
+	<li><p>Schließlich werden die SELs im Panorama eingezeichnet.</p>
+	<p><span id="Frame9" dir="ltr" style="float: left; width: 3.3in; border: none; padding: 0in; background: #ffffff"><p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+		<img src="chapter2_html_eb5deb8acba9bd7b.png" name="Image9" align="left" width="100%" height="auto">
+  <br clear="left"/>
+</img>
+<font size="3" style="font-size: 12pt"><i>Figure
+		<span style="background: #c0c0c0">2</span>: Mit Pyton über
+		Homographimatritzen erstelltes Panoram</i></font></p>
+	</span><br clear="left">
+	</p>
+</ol>
+<p>Trotz der vielversprechenden Idee gibt es einige Probleme. Zum
+Beispiel sind die Scanbereiche an der Y-Achse gespiegelt und um 90°
+gegen den Uhrzeigersinn gedreht. Obwohl das Potential der Idee
+besteht, ist der Aufwand im Vergleich zum Nutzen zu hoch. 
+</p>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
+<h2 class="western" style="page-break-before: always"><a name="__RefHeading___Toc14243_776012695"></a>
+Manuelles Zusammenfügen</h2>
+<p>Bei der Manuellen Verarbeitung der von Python erzeugten Bildern
+müssen diese zunächst auf den Scanbereich zugeschnitten werden.
+Anschließend müssen die Scanbereiche manuell so ausgerichtet
+werden, dass sie nahtlos zusammengefügt werden können. Dies
+erfordert möglicherweise einige Anpassungen und eine sorgfältige
+Handhabung, um das beste Ergebnis zu erzielen.</p>
+<h1 class="western"><span id="Frame10" dir="ltr" style="float: left; width: 5.82in; border: none; padding: 0in; background: #ffffff"><p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+	<img src="chapter2_html_535feee35ee07dbc.png" name="Image10" align="left" width="100%" height="auto">
+  <br clear="left"/>
+</img>
+<font size="3" style="font-size: 12pt"><i>Figure
+	<span style="background: #c0c0c0">3</span>: manuell zusammengefügtes
+	Panorama</i></font></p>
+</span><br/>
+<br/>
+
+</h1>
+<div title="footer"><p align="center" style="line-height: 100%; margin-top: 0.2in; margin-bottom: 0in">
+	<span style="background: #c0c0c0"><sdfield type=PAGE subtype=RANDOM format=PAGE>4</sdfield></span></p>
+</div>
+</body>
+</html>

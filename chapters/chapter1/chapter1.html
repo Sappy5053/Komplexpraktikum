@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.5.5.2 (Linux)"/>
+	<meta name="created" content="2023-06-08T14:23:31.005465672"/>
+	<meta name="changed" content="2023-08-15T22:52:27.873253515"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		h1 { margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h1.western { font-family: "Liberation Sans", sans-serif; font-size: 18pt; font-weight: bold }
+		h1.cjk { font-family: "Source Han Sans CN"; font-size: 18pt; font-weight: bold }
+		h1.ctl { font-family: "Droid Sans Devanagari"; font-size: 18pt; font-weight: bold }
+		h2 { margin-top: 0.14in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt; font-weight: bold }
+		h2.cjk { font-family: "Source Han Sans CN"; font-size: 16pt; font-weight: bold }
+		h2.ctl { font-family: "Droid Sans Devanagari"; font-size: 16pt; font-weight: bold }
+		td p { orphans: 0; widows: 0; background: transparent }
+		h3 { margin-top: 0.1in; margin-bottom: 0.08in; background: transparent; text-decoration: underline; page-break-after: avoid }
+		h3.western { font-family: "Liberation Sans", sans-serif; font-size: 12pt; font-weight: normal }
+		h3.cjk { font-family: "Source Han Sans CN"; font-size: 12pt; font-weight: normal }
+		h3.ctl { font-family: "Droid Sans Devanagari"; font-size: 12pt; font-weight: normal }
+		a:link { color: #000080; text-decoration: underline }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><h1 class="western">
+Übertragen der SEL auf Einzelbilder</h1>
+<h2 class="western"><a name="__RefHeading___Toc14227_776012695"></a>Übersicht
+über den Aufbau der Daten und die Dokumentation des GSI Experimentes</h2>
+<p><br/>
+<br/>
+
+</p>
+<p>Der Datensatz besteht aus Bildern und Textdateien, die in mehrere
+Scanbereiche aufgeteilt sind.</p>
+<h3 class="western"><a name="__RefHeading___Toc80151_3990774343"></a>1.
+Mikroskopbilder:</h3>
+<p>Die Bilder sind nach dem Schema
+&quot;Jenamicro18_fs&lt;Spalte&gt;&lt;Zeile&gt;.tif&quot; (z.B.
+Jenamicro18_fs12.tif) benannt. Sie bestehen aus einer Serie von
+Mikroskopbildern, die die zu den jeweiligen Scanbereichen
+korrespondieren. 
+</p>
+<p><br/>
+<br/>
+
+</p>
+<h3 class="western"><a name="__RefHeading___Toc80153_3990774343"></a>2.
+Textdateien:</h3>
+<p>Die Textdateien enthalten Koordinaten, die mit Ionen beschossen
+wurden. Das Format beinhaltet:</p>
+<p>       a. Die ersten 6 Zeilen bilden die Kopfzeile (Metadaten zum
+Experiment).</p>
+<p>       b. Jede Zeile repräsentiert die spezifischen Koordinaten,
+die beschossen werden, mit 5 Werten:</p>
+<ol>
+	<li><p> x-Koordinate in Bezug auf den entsprechenden Scanbereich
+	basierend auf einem 12-Bit-ADC (abweichend von den Bildkoordinaten).</p>
+	<li><p>y-Koordinate in Bezug auf den entsprechenden Scanbereich
+	basierend auf einem 12-Bit-ADC (abweichend von den Bildkoordinaten).</p>
+	<li><p>LatchUp (0 - kein SEL, 4 - SEL).</p>
+	<li><p>Möglicher ADC-Eingang (in diesem Fall nicht zutreffend).</p>
+	<li><p>Der Channeltron-Wert (entspricht der Anzahl der emittierten
+	Elektronen).</p>
+</ol>
+<p><br/>
+<br/>
+
+</p>
+<h3 class="western"><a name="__RefHeading___Toc80155_3990774343"></a>3.
+Datenorganisation:</h3>
+<p>Die Daten sind auf 25 Scanbereiche verteilt, die jeweils ein Bild
+und eine *.txt-Datei enthalten.</p>
+<h3 class="western"><a name="__RefHeading___Toc80157_3990774343"></a>4.
+Dokumentation:</h3>
+<p>Für die Bilder mit 5-facher Vergrößerung sind folgende
+Dimensionsinformationen bereitgetellt:</p>
+<ul>
+	<li><p>x: 597px = 900µm</p>
+	<li><p>y: 461px = 700µm</p>
+</ul>
+<p>Dimensionsinformationen zur Ionenablenkung:</p>
+<ul>
+	<li><p>x = 9*33,7µm = 303,3µm</p>
+	<li><p>y = 9*35,7µm = 321,3µm</p>
+</ul>
+<p><br/>
+<br/>
+
+</p>
+<p>Diese Übersicht soll ein besseres Verständnis der Datenstruktur
+für die Mikroskopbilder und Textdateien vermitteln, die nach den
+oben aufgeführten Spezifikationen organisiert sind und so eine
+effiziente Nutzung und Analyse der Daten ermöglichen.</p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western"><a name="__RefHeading___Toc14227_776012695 Copy 1"></a>
+Übersicht über den Aufbau der Daten und die Dokumentation des LUNTE
+Experimentes</h2>
+<p>Der Datensatz besteht aus Bildern und csv-Dateien, die jeweils
+einen von drei, sich überlappende, Vertikalen Streifen darstellen.
+Diese Daten sind, im Gegensatz zu den GSI Daten, schon aufeinander
+abgestimmt.</p>
+<p><br/>
+<br/>
+
+</p>
+<h2 class="western"><a name="__RefHeading___Toc14229_776012695"></a>Vorbereitungen</h2>
+<p style="font-weight: normal">Um die bereitgestellten *.dat Dateien
+in Textdateien umzuwandeln, wird das Perl-Skript &quot;extract_dat2txt.pl&quot;
+verwendet, das von GSI bereitgestellt wurde. Die Benutzung des
+Skripts erfolgt in einem ordnungsgemäß definierten Verzeichnis, um
+die ordnungsgemäße Funktion des Programms zu gewährleisten.</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal"><u>Die Ordnerstruktur für die GSI
+Daten ist wie folgt:</u></p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal">1. Hauptordner, in dem sich die
+Pythonskripte befinden:</p>
+<ul>
+	<li><p style="font-weight: normal">fun3.py</p>
+	<li><p style="font-weight: normal">LatchUpMap_v2_2.py</p>
+	<li><p style="font-weight: normal">EmptyLatchUpMap_v0_0.py</p>
+</ul>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal">2. Unterordner innerhalb des
+Hauptordners:</p>
+<p style="font-weight: normal">    a. &quot;pics&quot; für die
+Bilder:</p>
+<ul>
+	<li><p style="font-weight: normal">Mikroskopbilder (Beispielsweise
+	von Elektronikbauteilen oder Halbleitern)</p>
+</ul>
+<p style="font-weight: normal">       
+</p>
+<p>    b. &quot;docs&quot; für die umgewandelten Textdateien:</p>
+<ul>
+	<li><p style="font-weight: normal">Hier werden die Textdateien
+	gespeichert, die aus den ursprünglichen *.dat Dateien mithilfe von
+	&quot;extract_dat2txt.pl&quot; generiert wurden.</p>
+</ul>
+<p>    c. “img” fuer die fertigen Bilder:</p>
+<ul>
+	<li><p style="font-weight: normal">Hier werden die Ergebnisse des
+	Skriptes  LatchUpMap_v2_2.py gespeichert.</p>
+</ul>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal"><u>Die Ordnerstruktur für die LUNTE
+Daten ist wie folgt:</u></p>
+<p style="font-weight: normal">1. Hauptordner, in dem sich die
+Pythonskripte befinden:</p>
+<ul>
+	<li><p style="font-weight: normal">binningFun_v0_6.py</p>
+	<li><p style="font-weight: normal">CombineCSV.py</p>
+	<li><p style="font-weight: normal">pixelBinning_v0-6.py</p>
+</ul>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal">2. Unterordner innerhalb des
+Hauptordners:</p>
+<p>    a. “csv” fuer die LUNTE csv-Daten</p>
+<p>    b. “panos” furdie panoramas in original groesse</p>
+<p>    c. “pics” fur die Bilder aus den LUNTE Daten</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal">Um die volle Funktionsfähigkeit des
+Programms zu garantieren, ist es wichtig, diese Ordnerstruktur strikt
+einzuhalten. Durch die richtige Organisation können die
+verschiedenen Skripte und Dateien effizient verarbeitet und genutzt
+werden, um den gewünschten Workflow zu ermöglichen.</p>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
+<h2 class="western" style="page-break-before: always"><a name="__RefHeading___Toc14231_776012695"></a>
+Extrahieren der SEL-Koordinaten aus den *.txt Files</h2>
+<p style="font-weight: normal">Um die SEL auf die Mikroskopbilder zu
+projezieren müssen die Koordinaten eingelesen und sortiert werden.
+Dazu werden folgende Schritte ausgeführt:</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<h3 class="western"><a name="__RefHeading___Toc80159_3990774343"></a>1.
+Erstellung der Listen mit relevanten Dokumenten:</h3>
+<p style="font-weight: normal">Es werden zwei separate Listen für
+die in den Verzeichnissen &quot;docs&quot; und &quot;pics&quot;
+gefundenen relevanten Dokumente zu erstellen. Relevante Dokumente
+haben die Dateiendungen &quot;.dat.txt&quot; oder &quot;.tif&quot;.
+Die Dateien im Unterordner &quot;Latchups&quot; sind davon
+ausgenommen und werden bei diesem Schritt nicht berücksichtigt.</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<h3 class="western"><a name="__RefHeading___Toc80161_3990774343"></a>2.
+Ablauf für jedes relevante Dokument in &quot;docs&quot;:</h3>
+<p style="font-weight: normal">Für jedes in Schritt 1 identifizierte
+relevante Dokument im Verzeichnis &quot;docs&quot; wird folgender
+Ablauf abgearbeitet:</p>
+<p style="font-weight: normal"><i>a) Zeilenweise einlesen:</i> Das
+Dokument wird zeilenweise eingelesen. Jede Zeile wird anschließend
+einzeln verarbeitet.</p>
+<p style="font-weight: normal">   
+</p>
+<p style="font-weight: normal"> <i>b) Header löschen:</i> Der
+Header, also die ersten 6 Zeilen mit Metadaten, wird in diesem
+Schritt entfernt.</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal"><i><span style="text-decoration: none">c)
+Zeile in 5 Elemente aufteilen:</span></i> Die verbleibenden Zeilen
+des Dokuments werden nun entsprechend dem Aufbau der Daten in fünf
+separate Elemente aufgeteilt. Damit wird eine Struktur geschaffen,
+die es ermöglicht, die Informationen später leichter
+weiterzuverarbeiten.</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal"><i>d) Prüfung und Speicherung von
+Latchups:</i> In diesem Schritt wird überprüft, ob ein Single Event
+Latchup (SEL) für die jeweilige Zeile vorliegt. Wenn dies der Fall
+ist, wird die Zeile in der Liste &quot;LatchUps&quot; gespeichert.
+Diese Liste dient als Sammlung der Latchup-Events, die in den
+verschiedenen Dokumenten gefunden wurden.</p>
+<p style="font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="font-weight: normal">Zusammengefasst besteht der Prozess
+also aus der Erstellung zweier Listen mit relevanten Dokumenten und
+der Durchführung bestimmter Operationen wie dem Einlesen, Löschen
+von Headern und Aufteilung von Zeilen für jedes relevante Dokument
+im Verzeichnis &quot;docs&quot;. Ziel ist es,  Latchup-Events
+extrahieren und in einer separaten Liste zur weiterverarbeitung zu
+speichern.</p>
+<p style="font-weight: normal">(<font color="#c9211e"><b>Verarbeitetes
+und unverarb. Dokument in Anhang</b></font>)</p>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
+<h2 class="western" style="page-break-before: always"><a name="__RefHeading___Toc14233_776012695"></a>
+Einzeichnen der SEL auf den Bildern</h2>
+<p style="line-height: 100%; margin-bottom: 0in">Nachdem die SEL aus
+den Textdateien extrahiert wurden, können sie nun auf die
+Mikroskopbilder projiziert werden. Dazu werden folgende Schritte
+ausgeführt:</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<ol>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Finden des
+	korrespondierenden Bildes:</i> 
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Basierend auf dem
+	Namen des *.dat.txt Dokuments wird das passende Bild ausgewählt. 
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in"></p>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Öffnen des
+	Bildes mit OpenCV:</i> 
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Nachdem das
+	korrespondierende Bild gefunden wurde, wird es mit der
+	OpenCV-Bibliothek geöffnet. OpenCV ermöglicht die Berechnung der
+	Dimensionen des Bildes und konvertiert es in ein Numpy-Array zur
+	weiteren Verarbeitung.</p>
+	<p style="line-height: 100%; margin-bottom: 0in"></p>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Berechnung
+	der SEL-Koordinaten:</i> 
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Für jeden SEL im
+	Datensatz werden die genauen Koordinaten im Bild berechnet. Dies
+	bezieht sich auf den Scanbereich des Bildes und liefert die
+	Positionsdaten für die anstehenden Transformationen. Dazu werden
+	die folgenden Formeln verwendet:</p>
+	<table width="100%" cellpadding="0" cellspacing="0">
+		<col width="158*"/>
+
+		<col width="98*"/>
+
+		<tr valign="top">
+			<td width="62%" style="border: none; padding: 0in"><p>            
+				                                        
+				<img src="chapter1_html_572dc67da6ef7bb4.gif" name="Object1" width="99" height="40"/>
+</p>
+				<p>                                                     
+				<img src="chapter1_html_5033451af9972572.gif" name="Object2" width="101" height="40"/>
+</p>
+			</td>
+			<td width="38%" style="border: none; padding: 0in"><p>P –
+				Position im Scanbereich in Pixeln</p>
+				<p>d – Ablenkung 
+				</p>
+				<p>x<sub><span style="font-weight: normal">ADC</span></sub><span style="font-weight: normal">/y</span><sub><span style="font-weight: normal">ADC</span></sub><span style="font-weight: normal">
+				– Position im Scanbereich bezogen auf ADC</span></p>
+				<p style="font-weight: normal">ADC – 12bit (4096)</p>
+			</td>
+		</tr>
+	</table>
+	<p style="line-height: 100%; margin-bottom: 0in"></p>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Umrechnung
+	der Positionen in Bildkoordinaten: </i>
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Die zuvor
+	berechneten Positionen werden nun in Bildkoordinaten umgerechnet.
+	Dazu werden folgende Schritte durchgeführt:</p>
+	<ol>
+		<li><p style="line-height: 100%; margin-bottom: 0in">Spiegelung an
+		der Y-Achse: Die Koordinaten werden so angepasst, dass sie
+		symmetrisch bezüglich der Y-Achse angeordnet sind.</p>
+		<li><p style="line-height: 100%; margin-bottom: 0in">Drehung um 90°
+		gegen den Uhrzeigersinn: Der Koordinatenvektor wird um 90° gegen
+		den Uhrzeigersinn gedreht.</p>
+		<li><p style="line-height: 100%; margin-bottom: 0in">Koordinatentransformation:
+		Transformation von Scan-Bereich-Koordinaten in Bildkoordinaten</p>
+		<p style="line-height: 100%; margin-bottom: 0in"><img src="chapter1_html_bbb8839926e66fe3.gif" name="Object3" width="151" height="40"/>
+	<img src="chapter1_html_77493ad7c97e0050.gif" name="Object4" width="158" height="40"/>
+</p>
+		<p style="line-height: 100%; margin-bottom: 0in"></p>
+	</ol>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Ändern der
+	Pixel im Numpy-Array: </i>
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Innerhalb des
+	Bildes (Numpy-Array) werden die Pixelwerte für SEL auf [0, 0, 255]
+	(rot) gesetzt. Optional können auch die Pixelwerte für den Rahmen
+	auf [255, 0, 0] (blau) gesetzt werden um die Analyse zu
+	vereinfachen.</p>
+	<p style="line-height: 100%; margin-bottom: 0in"></p>
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Speichern
+	des modifizierten Bildes: </i>
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Schließlich wird
+	das veränderte Bild mithilfe von OpenCV im Ordner &quot;Latchups&quot;
+	gespeichert. Dadurch ist das Bild für die spätere Analyse und
+	Verwendung verfügbar.</p>
+</ol>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><span id="Frame6" dir="ltr" style="float: left; width: 4.31in; border: none; padding: 0in; background: #ffffff"><p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+	<img src="chapter1_html_5c84be9f370d562f.png" name="Image6" align="left" width="100%" height="auto">
+  <br clear="left"/>
+</img>
+<font size="3" style="font-size: 12pt"><i>Figure
+	<span style="background: #c0c0c0">1</span>:
+	Jenamicro18_fs35_LatchUpMap.png</i></font></p>
+</span><br clear="left"><br/>
+
+</p>
+<p>Hier fällt auf, dass in Bereichen, die eigentlich komplett
+empfindlich sein sollten, Zeilen ausbilden. Das ist darauf
+zurückzuführen, dass die SEL-Daten an die größe der Bilder
+angepasst werden. Die bei dem Experiment abgetasteten Zeilen sind
+nicht horizontal, sondern haben eine kleine vertikale Komponente. Um
+diesem Effekt entgegenzuwirken müssen die Koordinaten durch die
+Anzahl der leeren Zeilen zwischen zwei besetzten Zeilen (34) geteilt
+werden. Dafür wurde ein neuer Ansatz entwickelt. Die ersten zwei
+Schritte sind identisch zum oben beschriebenen Vorgehen. Es ist also
+ein zu den SEL-Daten passendes Bild geöffnet.</p>
+<ol start="3">
+	<li><p> <i>Bildgröße ändern: </i>
+	</p>
+	<p style="font-style: normal">Um die größe des Bildes anpassen zu
+	können muss zuerst ein Skalierungsfaktor (SF) berechnet werden.
+	Dieser wird aus der Größe des aktiven Bereichs auf den
+	Originalbildern und der Größe des aktiven Bereichs auf den neuen
+	Bildern berechnet.</p>
+	<p style="font-style: normal"><img src="chapter1_html_25be94f6604998c9.gif" name="Object8" width="459" height="38"/>
+</p>
+	<p style="font-style: normal"><img src="chapter1_html_b7c834f3341bb965.gif" name="Object9" width="469" height="38"/>
+</p>
+</ol>
+<p style="margin-left: 0.49in"><span style="font-style: normal">Mit
+diesen Faktoren kann nun die neue Größe des Bildes berechnet werden
+und das Bild mit Hilfe der Funktion </span><i>cv2.resize()
+</i><span style="font-style: normal">verkleinert. Als Interpolation
+Methode wird hierbei </span><i>cv2.INTER_AREA </i><span style="font-style: normal">verwendet,
+da diese die bevorzugte Methode zum verkleinern von Bildern ist.
+{<a href="https://docs.opencv.org/">https://docs.opencv.org/</a>,
+</span><span style="font-style: normal">abgerufen: 15.08.2023</span><span style="font-style: normal">}</span></p>
+<ul>
+	<ul>
+		<li style="display: block"><p style="font-style: normal"></p>
+	</ul>
+</ul>
+<ol start="3">
+	<li><p><i>Erstellen einer SEL-Map:</i></p>
+	<p style="font-style: normal">Als Grundlage dient ein Array mit den
+	Dimensionen der Aktiven Fläche (120x120 pixel). Das Array wird mit
+	schwarzen Pixeln gefüllt und ein blauer Rand wird eingefügt.</p>
+	<p style="font-style: normal">Um die SEL in das Array einzufügen
+	müssen die, aus dem Text Dokument extrahierten, Koordinaten an die
+	Dimensionen des neuen Arrays angepasst werden. Dies erfolgt durch
+	eine Division mit dem Skalierungsfaktor 34. Die Daten sind im Bezug
+	auf die Bilder gespiegelt und verschoben. Um sie kombinierbar zu
+	machen müssen die Daten also noch an der y-Achse gepiegelt werden
+	und um 90° in mathematisch positve Richtung gedreht werden.</p>
+	<p style="font-style: normal">Mit den angepassten Koordinaten können
+	die SEL als rote pixel in das Array eingefügt werden.</p>
+	<li><p><i>Zusammenfügen von SEL-Map und Bildern</i></p>
+</ol>
+<p style="font-style: normal; margin-left: 0.49in">Die Zentren beider
+Bilder liegen übereinander. Um die Bilder zusammenfügen zu können
+müss also zuerst ein Versatz in x und y Richtung berechnet werden.</p>
+<table width="100%" cellpadding="0" cellspacing="0">
+	<col width="170*"/>
+
+	<col width="86*"/>
+
+	<tr valign="top">
+		<td width="66%" style="border: none; padding: 0in"><p>            
+			<img src="chapter1_html_cc4648fb18ca816e.gif" name="Object10" width="360" height="40"/>
+</p>
+		</td>
+		<td width="34%" style="border: none; padding: 0in"><p style="font-style: normal; margin-left: 0.49in; margin-bottom: 0in">
+			B – Breite</p>
+			<p style="font-style: normal; margin-left: 0.49in; margin-bottom: 0in">
+			H – Höhe</p>
+			<p style="font-style: normal; margin-left: 0.49in">x<sub>0</sub> ,
+			y<sub>0</sub> – Versatz</p>
+		</td>
+	</tr>
+</table>
+<p style="font-style: normal"><br/>
+<br/>
+
+</p>
+<p style="margin-left: 0.49in">Nun erfolgt eine Iteration durch die
+Elemente der SEL Map. Wenn das Pixel nicht schwarz ist, wird das
+correspondierende Pixel im Bild mit dem Wert überschrieben.</p>
+<p style="margin-left: 0.49in"><br/>
+<br/>
+
+</p>
+<ol start="3">
+	<li><p style="line-height: 100%; margin-bottom: 0in"><i>Speichern
+	des modifizierten Bildes: </i>
+	</p>
+	<p style="line-height: 100%; margin-bottom: 0in">Schließlich wird
+	das veränderte Bild mithilfe von OpenCV im Ordner &quot;img&quot;
+	gespeichert. Dadurch ist das Bild für die spätere Analyse und
+	Verwendung verfügbar.</p>
+	<p style="line-height: 100%; margin-bottom: 0in"></p>
+</ol>
+<p style="line-height: 100%; margin-bottom: 0in"><span id="Frame7" dir="ltr" style="float: left; width: 4in; border: none; padding: 0in; background: #ffffff"><p style="line-height: 100%; margin-top: 0.08in; margin-bottom: 0.08in">
+	<img src="chapter1_html_1d510b69f746f807.png" name="Image7" align="left" width="100%" height="auto">
+  <br clear="left"/>
+</img>
+<font size="3" style="font-size: 12pt"><i>Figure
+	<span style="background: #c0c0c0">2</span>:
+	micfs35.dat.txt_overlay.png</i></font></p>
+</span><br clear="left"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+<p style="line-height: 100%; margin-bottom: 0in">Bei diesen Bildern
+kommt es nun nicht mehr zur Zeilenbildung wie beim vorherigen Ansatz.</p>
+<h1 class="western"><br/>
+<br/>
+
+</h1>
+<div title="footer"><p align="center" style="line-height: 100%; margin-top: 0.2in; margin-bottom: 0in">
+	<span style="background: #c0c0c0"><sdfield type=PAGE subtype=RANDOM format=PAGE>7</sdfield></span></p>
+</div>
+</body>
+</html>
