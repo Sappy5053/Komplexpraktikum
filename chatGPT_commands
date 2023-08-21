@@ -1,0 +1,5 @@
+This is a html file. Extract the text content visible when displayed in a browser starting with the first heading and ending at the next heading. Order of the heading doesnt matter. Be prepared to put it back after editing. When the text fragment is smaller than 2000 characters print it, otherwise give me a file to download.
+
+Extract the text content from the html file visible when displayed in a browser starting with the next heading and ending at the heading following this. Order of the heading doesnt matter. Be prepared to put it back after editing. When the text fragment is smaller than 2000 characters print it, otherwise give me a file to download.
+
+Here is the edited text. Please put it into the html filein place of the part you gave me earlier. when you are done give me the whole document to download, but be ready to continue working with it.
