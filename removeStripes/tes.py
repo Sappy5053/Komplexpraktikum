@@ -54,7 +54,7 @@ for index, row in df.iterrows():
     x,y = row[0], row[1]
     arr[x-1,y-1] = 255
 
-cv2.imwrite('img.png', arr)
+cv2.imwrite(doc+ '.png', arr)
 
 
 
