@@ -1,4 +1,0 @@
-1,2:	X, Y		-		X, Y - Werte auf der MAP
-3:	In(Sel)		-		Wert des Latch-Up (IMMER 0 / 4) 4 = latch up, 0 = keiner (4 weil Daten stammen aus Binärfolge (3. Bit))
-4:	ADC		-		möglicher ADC Eingang, in Messung nicht verwendet (da nicht möglich)
-5:	Channeltron	-		Wert aus dem Channeltron(wie viele e- sind ausgetreten)
