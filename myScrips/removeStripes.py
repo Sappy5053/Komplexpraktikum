@@ -10,7 +10,8 @@ empty   = '0\t0\t0\t0\t0\n'
     
 #get documents
 path = os.getcwd()
-path1 = path + '/changed/'
+path = path + '/docs'
+path1 = path + '/remStrips/'
 docs = os.listdir(path)
 docs = [doc for doc in docs if doc.endswith('.dat.txt')]
 
