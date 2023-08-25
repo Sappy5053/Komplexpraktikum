@@ -7,6 +7,8 @@ sep     = '\t'
 erase   = 10
 empty   = '0\t0\t0\t0\t0\n'
 
+genImg  = False
+
     
 #get documents
 path = os.getcwd()
@@ -38,25 +40,26 @@ for doc in docs:
 
     print(len(lines), len(lines1))
     
-    df = pd.read_csv(path1 + doc, sep = sep, header = None)
-    
-    df.drop(columns = [2], inplace = True)
+    if genImg:
+        df = pd.read_csv(path1 + doc, sep = sep, header = None)
+        
+        df.drop(columns = [2], inplace = True)
 
-    df = df.astype(int)
-    df = df/34.4
-    df = df.astype(int)
-##    NP = df.to_numpy()
+        df = df.astype(int)
+        df = df/34.4
+        df = df.astype(int)
+    ##    NP = df.to_numpy()
 
-    arr = np.zeros((120, 120))
+        arr = np.zeros((120, 120))
 
-##    shape = NP.shape
-##    print(shape)
+    ##    shape = NP.shape
+    ##    print(shape)
 
-    for index, row in df.iterrows():
-        x,y = row[0], row[1]
-        arr[x-1,y-1] = 255
+        for index, row in df.iterrows():
+            x,y = row[0], row[1]
+            arr[x-1,y-1] = 255
 
-    cv2.imwrite(path1 + doc+ '.png', arr)
+        cv2.imwrite(path1 + doc+ '.png', arr)
     
 
             
