@@ -12,15 +12,15 @@ genImg  = False
     
 #get documents
 path = os.getcwd()
-path = path + '/docs'
-path1 = path + '/remStrips/'
+path = path + '/docs/'
+path1 = path + 'remStrips/'
 docs = os.listdir(path)
 docs = [doc for doc in docs if doc.endswith('.dat.txt')]
 
 lines1 = []
 for doc in docs:
     #read documents
-    with open(doc, 'r') as f:
+    with open(path + doc, 'r') as f:
         lines = f.readlines()
     
     for i in range(len(lines)):
