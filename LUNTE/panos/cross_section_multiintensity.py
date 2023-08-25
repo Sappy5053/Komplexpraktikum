@@ -57,7 +57,6 @@ for csv_file in csv_files:
         ax1.scatter(pulse_energies , cs, color = 'red', label = 'calculated (SEL/ION)', s=5, rasterized=True)
 
         #plot uncorrected Data
-        #plot SEL/ION Data
         cs = np.array([0.024967159014450034])
         ax1.scatter(pulse_energies , cs, color = 'green', label = 'extracted from uncorrected picture', s=5, rasterized=True)
 
