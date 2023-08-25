@@ -22,6 +22,7 @@ for doc in docs:
     #read documents
     with open(path + doc, 'r') as f:
         lines = f.readlines()
+        lines = lines[6:]
     
     for i in range(len(lines)):
         line = lines[i]
