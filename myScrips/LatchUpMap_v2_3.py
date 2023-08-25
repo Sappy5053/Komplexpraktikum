@@ -2,7 +2,7 @@ from fun3 import *
 
 
 #configuration
-D4Col = False#True
+D4Col = True#False#Set True to delete first 4 columns
 
 ##get current path
 path = os.getcwd()
