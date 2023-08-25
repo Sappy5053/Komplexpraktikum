@@ -19,6 +19,7 @@ docs = [doc for doc in docs if doc.endswith('.dat.txt')]
 
 lines1 = []
 for doc in docs:
+    lines1 = []
     #read documents
     with open(path + doc, 'r') as f:
         lines = f.readlines()
