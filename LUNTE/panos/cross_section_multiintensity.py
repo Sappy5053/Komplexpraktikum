@@ -49,13 +49,17 @@ for csv_file in csv_files:
 
         ##	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True) #s=datapoint-size
         #plot csv data
-        ax1.scatter(pulse_energies , cross_section, color = 'blue', label = 'extracted from picture', s=5, rasterized=True)	
+        ax1.scatter(pulse_energies , cross_section, color = 'blue', label = 'extracted from corrected picture', s=5, rasterized=True)	
         print(cross_section)
         
         #plot SEL/ION Data
         cs = np.array([0.0210415175686719])
         ax1.scatter(pulse_energies , cs, color = 'red', label = 'calculated (SEL/ION)', s=5, rasterized=True)
 
+        #plot uncorrected Data
+        #plot SEL/ION Data
+        cs = np.array([0.024967159014450034])
+        ax1.scatter(pulse_energies , cs, color = 'green', label = 'extracted from uncorrected picture', s=5, rasterized=True)
 
         # set axis labels and title
         ax1.set_xlabel('Pulse Energy [pJ]', fontsize=12)
