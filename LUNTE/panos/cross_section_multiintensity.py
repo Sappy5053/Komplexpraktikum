@@ -43,7 +43,7 @@ for csv_file in csv_files:
         #	cross_section = cross_section[::int(len(cross_section)/100)]
 
         # plot the data
-        fig1, ax1 = plt.subplots(figsize=(6, 4), dpi=200)
+        fig1, ax1 = plt.subplots(figsize=(10, 4), dpi=200)
 
 
 
