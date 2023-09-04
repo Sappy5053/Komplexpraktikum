@@ -49,6 +49,7 @@ for csv_file in csv_files:
 
         ##	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True) #s=datapoint-size
         #plot csv data
+        pulse_energies = [1.2]
         ax1.scatter(pulse_energies , cross_section, color = 'blue', label = 'extracted from corrected picture', s=5, rasterized=True)	
         print(cross_section)
         
@@ -61,7 +62,7 @@ for csv_file in csv_files:
         ax1.scatter(pulse_energies , cs, color = 'green', label = 'extracted from uncorrected picture', s=5, rasterized=True)
 
         # set axis labels and title
-        ax1.set_xlabel('Pulse Energy [pJ]', fontsize=12)
+        ax1.set_xlabel('Ion Energy [GeV]', fontsize=12)
         ax1.set_ylabel('SEL X-section [mm²]', fontsize=12)
         ax1.set_title(f'Latchup Cross Section vs Pulse Energy ({csv_file})', fontsize=12)
         ax1.grid(color='gray', linestyle='--', linewidth=0.5)
