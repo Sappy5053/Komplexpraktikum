@@ -59,18 +59,18 @@ for csv_file in csv_files:
 	# plot the data
 	fig1, ax1 = plt.subplots(figsize=(6, 4), dpi=200)
 	
-	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True, color = 'blue', label = 'Laser Data')#s=datapoint-size
+	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True, color = 'blue', label = 'Laserdaten')#s=datapoint-size
 
-	ax1.scatter(range(n) , cBild, s=5, rasterized=True, color = 'red', label = 'extracted from corrected picture')#s=datapoint-size
-	ax1.scatter(range(n) , cIon, s=5, rasterized=True, color = 'green', label = 'calculated (SEL/ION - corrected)')#s=datapoint-size
-	ax1.scatter(range(n) , ucBild, s=5, rasterized=True, color = 'yellow', label = 'extracted from uncorrected picture')#s=datapoint-size
-	ax1.scatter(range(n) , ucIon, s=5, rasterized=True, color = 'brown', label = 'calculated (SEL/ION - uncorrected)')#s=datapoint-size
+	ax1.scatter(range(n) , cBild, s=5, rasterized=True, color = 'red', label = 'aus korrigertem Bild extrahiert')#s=datapoint-size
+	#ax1.scatter(range(n) , cIon, s=5, rasterized=True, color = 'yellow', label = 'berechnet (SEL/ION - korrigiert)')#s=datapoint-size
+	ax1.scatter(range(n) , ucBild, s=5, rasterized=True, color = 'green', label = 'aus unkorrigiertem Bild extrahiert')#s=datapoint-size
+	ax1.scatter(range(n) , ucIon, s=5, rasterized=True, color = 'brown', label = 'berechnet (SEL/ION - unkorrigiert)')#s=datapoint-size
 ##	ax1.scatter(pulse_energies , ucIon, s=5, rasterized=True, color = 'brown', label = 'calculated (SEL/ION - uncorrected)')#s=datapoint-size
 
 	# set axis labels and title
-	ax1.set_xlabel('Pulse Energy [pJ]', fontsize=12)
-	ax1.set_ylabel('SEL X-section [mm²]', fontsize=12)
-	ax1.set_title(f'Latchup Cross Section vs Pulse Energy ({csv_file})', fontsize=12)
+	ax1.set_xlabel('Pulsenergie [pJ]', fontsize=12)
+	ax1.set_ylabel('SEL Fläche [mm²]', fontsize=12)
+	ax1.set_title(f'Latchup Fläche vs Pulsenergie ({csv_file})', fontsize=12)
 	ax1.grid(color='gray', linestyle='--', linewidth=0.5)
 	ax1.tick_params(axis='both', which='major', labelsize=10)
 	ax1.set_yscale('log')	#logarithmic y-scale
