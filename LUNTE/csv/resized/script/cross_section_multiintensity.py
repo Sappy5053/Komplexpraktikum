@@ -4,6 +4,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+def makeHorLine(value, n):
+    line = []
+
+    for i in range(n):
+        line.append(value)
+    return line
+
 # get a list of all CSV files in the data folder
 csv_files = [f for f in os.listdir(".") if f.endswith('.csv')]
 
@@ -41,12 +48,25 @@ for csv_file in csv_files:
 	# Uncomment this to limit the number of data points to 100 if there are many data points in graph
 #	pulse_energies = pulse_energies[::int(len(pulse_energies)/100)]
 #	cross_section = cross_section[::int(len(cross_section)/100)]
-	
+
+	#make lists for horizontal lines
+	n = 1600#len(pulse_energies)
+	cBild  = makeHorLine(0.01150666902573558, n)
+	cIon   = makeHorLine(0.00283382940966601, n)
+	ucBild = makeHorLine(0.024967159014450034, n)
+	ucIon  = makeHorLine(0.0210415175686719, n)
+        
 	# plot the data
 	fig1, ax1 = plt.subplots(figsize=(6, 4), dpi=200)
 	
-	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True)	#s=datapoint-size
-	
+	ax1.scatter(pulse_energies , cross_section, s=5, rasterized=True, color = 'blue', label = 'Laserdaten')#s=datapoint-size
+
+	ax1.scatter(range(n) , cBild, s=5, rasterized=True, color = 'red', label = 'extracted from corrected picture')#s=datapoint-size
+	ax1.scatter(range(n) , cIon, s=5, rasterized=True, color = 'green', label = 'calculated (SEL/ION - corrected)')#s=datapoint-size
+	ax1.scatter(range(n) , ucBild, s=5, rasterized=True, color = 'yellow', label = 'extracted from uncorrected picture')#s=datapoint-size
+	ax1.scatter(range(n) , ucIon, s=5, rasterized=True, color = 'brown', label = 'calculated (SEL/ION - uncorrected)')#s=datapoint-size
+##	ax1.scatter(pulse_energies , ucIon, s=5, rasterized=True, color = 'brown', label = 'calculated (SEL/ION - uncorrected)')#s=datapoint-size
+
 	# set axis labels and title
 	ax1.set_xlabel('Pulse Energy [pJ]', fontsize=12)
 	ax1.set_ylabel('SEL X-section [mm²]', fontsize=12)
@@ -54,9 +74,11 @@ for csv_file in csv_files:
 	ax1.grid(color='gray', linestyle='--', linewidth=0.5)
 	ax1.tick_params(axis='both', which='major', labelsize=10)
 	ax1.set_yscale('log')	#logarithmic y-scale
+	ax1.legend()
 	plt.show()	#show the diagram
 	fig1.savefig(f"{csv_file}.svg")	#save diagram as svg-file
 	fig1.savefig(f"{csv_file}.png")	#save diagram as png-file
 #	np.savetxt('np.csv', pulse_energies cross_section, delimiter=';', header='pulse energy, cross-section')	# , fmt='%.2f'
 
 	print(cross_section)
+
