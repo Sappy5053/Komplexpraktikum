@@ -31,6 +31,8 @@ ErrorCnt = 0
 ErrorList = []
 cnt = 0
 cnt2 = 0
+D4Col = False#True#Set True to delete first 4 columns
+
 
 ##pixel colors
 Red = np.array([0, 0, 255])
@@ -103,3 +105,92 @@ def Files(path):
             picFiles.remove(pic)
 
     return [docFiles, picFiles]
+
+def getImage(path, pic):
+    '''
+    opens an image and gets height and width
+    '''
+
+    ##open image
+    print("\tOpening image ", pic)
+    picPath = path + "/pics/" + pic
+    image = cv2.imread(picPath)
+    
+    ##get height & width
+    height, width = image.shape[:2]
+    print("\t\tImage height: y = ", height)
+    print("\t\tImage width:  x = ", width)
+
+    #resize Image
+    height = int(height*ResizeFactorY)
+    width = int(width*ResizeFactorX)
+    image = cv2.resize(image, (width, height),  interpolation=cv2.INTER_AREA)
+
+
+    return image, height, width
+
+def genSelMap(LatchUps):
+    '''
+    Function to generate an array corresponding to
+    active area with SEL-Locations marked in red
+    '''
+
+    #generate empty SEL MAP
+    shape = (ADC, ADC, 3)
+    array = np.full(shape, Black)
+    array[0, :] = array[-1, :] = array[:, 0] = array[:, -1] = Blue
+
+    #get coordinates
+    df = pd.DataFrame(LatchUps)
+    try:
+        df.drop(columns = [2, 3, 4], inplace = True)
+        df = df.astype(int)
+
+        #resize to fit image
+        coord = df/scale
+        coord = coord.astype(int)
+        coord.rename(columns = {1 : 'x', 0 : 'y'}, inplace = True)
+
+        #mirror
+        coord['x'] = -coord['x']
+        coord['x'] += ADC -1
+
+        #rotate
+        coord['x'], coord['y'] = ADC - 1 - coord['y'], coord['x']
+    except KeyError:
+        pass
+
+    #add SEL
+    if not D4Col:
+        for index, row in coord.iterrows():
+            x,y = row[0], row[1]
+            array[x-1,y-1] = Red
+    else:
+        for index, row in coord.iterrows():
+            if row[1] > 4:
+                x,y = row[0], row[1]
+                array[x-1,y-1] = Red
+
+    return array
+
+def overlay(image, array):
+    '''
+    function to overlay array and image
+    '''
+
+    #calculate offset
+    #// --> int(a/b)
+    offsetX = (image.shape[0] - array.shape[0])//2
+    offsetY = (image.shape[1] - array.shape[1])//2
+
+    #overlay
+    for i in range(array.shape[0]):
+        for j in range(array.shape[1]):
+            if np.all(array[i,j,:] == 0):
+                continue #skip iteration
+
+            image[offsetX + i, offsetY + j] = array[i,j]
+
+    return image
+
+    
