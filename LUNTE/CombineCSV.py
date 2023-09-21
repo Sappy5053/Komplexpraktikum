@@ -2,6 +2,9 @@ import os
 import pandas as pd
 
 def emptyRow(l):
+    '''
+    function to generate a string with l times '=;'
+    '''
     row = []
     for i in range(l):
         row.append('0;')
@@ -76,7 +79,7 @@ NewCSV = []
 
 #combine documents by appending rows
 for i in range(j):
-    #get row
+    #get row, catch out of range errors
     try:
         l = left[i]
         l = l[:-1]

@@ -57,7 +57,7 @@ for csv in csvList:
 
 #resize all pic and save in sub-folder resized
 picList = os.listdir(path1)
-picList = picList#[3:]
+picList = picList
 print(picList)
 
 for pic in picList:

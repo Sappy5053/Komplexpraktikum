@@ -15,6 +15,7 @@ for file in docFiles:
     #extract SEL location from file
     LatchUps = str2list(file, path)
     if len(LatchUps) == 0:
+        #no SEL found
         continue #skip iteration
 
     ##find picture that corresponds to current file

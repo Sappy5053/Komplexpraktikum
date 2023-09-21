@@ -6,6 +6,9 @@ from scipy.ndimage import zoom
 
 
 def BinningFactors(path1, path2):
+    '''
+    function to calculate binning factors
+    '''
     print(path1, path2)
     #open open Pano from GSI experiment
     P1 = cv2.imread(path1)
@@ -23,6 +26,9 @@ def BinningFactors(path1, path2):
     return [xFac, yFac]#P2Resized
 
 def ResizeCSV(path3, x, y, csv):
+    '''
+    wrapper around custom_binning_smallest_value
+    '''
     DF = pd.read_csv(path3 + csv, header = None, sep = ';')
     NP = DF.to_numpy()
     h, w = NP.shape[:2]
@@ -34,6 +40,11 @@ def ResizeCSV(path3, x, y, csv):
     return NP1
 
 def custom_binning_smallest_value(original_array, scale_factor_x, scale_factor_y):
+    '''
+    function to scale a numpy array down, so that the smallest threshhold
+    is used when several SEL are mapped to the same pixel
+    '''
+
     new_shape = (int(original_array.shape[0] * scale_factor_x), int(original_array.shape[1] * scale_factor_y))
     resized_array = np.zeros(new_shape)
     
@@ -60,6 +71,9 @@ def custom_binning_smallest_value(original_array, scale_factor_x, scale_factor_y
     return resized_array
 
 def ResizePic(path1, path2, picName, x, y):
+    '''
+    function to scale down picture and save it
+    '''
     pic = cv2.imread(path1 + picName)
     height, width = pic.shape[:2]
 

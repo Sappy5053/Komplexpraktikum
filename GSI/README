@@ -1,0 +1,34 @@
+python Version: 3.11.3
+
+used libraries:
+	openCV (cv2)
+	os
+	pandas
+	numpy
+
+Directories:
+	main
+		docs
+			--> .dat.txt files to be used in SEL Map generation
+			
+			docs-Backup
+				--> backup of original raw data
+			
+			remStrips
+				--> docs from pre-processed data
+		
+		img
+			--> images after processing
+			
+		pics
+			--> original images
+			
+		--> LatchUpMap_v2_3.py: generate SEL Maps from the pictures in pics and the documents in docs
+		
+		-->EmptyLatchUpMap_v0_0.py: generate empty SEL-Maps (frame only)
+		
+		--> fun3.py: functions for LatchUpMap_v2_3.py and EmptyLatchUpMap_v0_0.py
+		
+		--> removeStripes.py: pre-process the files in docs
+				
+			

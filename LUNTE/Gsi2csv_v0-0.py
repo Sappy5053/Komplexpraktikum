@@ -2,6 +2,7 @@ import cv2, os
 import numpy as np
 import pandas as pd
 
+#pixel colour and assumed corresponding ion energy
 RED = np.array([0, 0, 255])
 IMPULSE = 4000
 
